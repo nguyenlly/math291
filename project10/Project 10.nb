@@ -1,0 +1,861 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     39135,        853]
+NotebookOptionsPosition[     35692,        786]
+NotebookOutlinePosition[     36129,        803]
+CellTagsIndexPosition[     36086,        800]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Project 10: Monty Hall, Fall, and Crawl Problems", "Title",
+ CellChangeTimes->{{3.8168192641014795`*^9, 
+  3.816819301910675*^9}},ExpressionUUID->"339054c9-bf3f-4a70-ab5c-\
+39bd04882bc1"],
+
+Cell[CellGroupData[{
+
+Cell["The Monte Hall Problem", "Section",
+ CellChangeTimes->{{3.8168193063832912`*^9, 
+  3.8168193258431787`*^9}},ExpressionUUID->"f600de16-529d-44cc-9689-\
+7f03430843a4"],
+
+Cell["\<\
+You should switch door. This is because, at first, the chance of picking the \
+correct door is 1/3. When the host open the door with the goat and allow you \
+to pick again, you now have a 1/2 chance of picking the correct door, \
+increasing your chance of winning. This is the same for the problem with 100 \
+doors. The chance of picking the correct door is slim, 1/100. However, as 98 \
+of the doors are revealed to have a goat behind them and the host allow you \
+to re-pick the door, you now have a 1/2 chance of winning. Therefore, \
+choosing to switch will increase your chances in winning the car. If you \
+choose to switch, the probability of winning is 2/3. Whereas, if you choose \
+to stay with your original choice, the probability of winning is 1/3.\
+\>", "Text",
+ CellChangeTimes->{{3.81681939124437*^9, 3.816819525083249*^9}, {
+  3.816826540715366*^9, 3.8168266045674763`*^9}, {3.8168266598769584`*^9, 
+  3.8168266754963875`*^9}},ExpressionUUID->"0a8adbb8-e22d-4458-b47d-\
+a9cdc5396ecb"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"montyHall", "[", "n_", "]"}], ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "car", ",", " ", "myguess", ",", " ", "ifStay", ",", " ", "ifSwitch", 
+      ",", " ", "stayprob", ",", " ", "switchprob"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"car", " ", ":=", " ", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", "n"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"myguess", " ", ":=", " ", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", "n"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ifStay", " ", "=", " ", 
+      RowBox[{"Count", "[", 
+       RowBox[{
+        RowBox[{"Transpose", "[", 
+         RowBox[{"{", 
+          RowBox[{"car", ",", "myguess"}], "}"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"match_", ",", "match_"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ifSwitch", " ", "=", " ", 
+      RowBox[{"n", "-", "ifStay"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"stayprob", " ", "=", " ", 
+      RowBox[{"N", "[", 
+       RowBox[{"ifStay", "/", "n"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"switchprob", " ", "=", " ", 
+      RowBox[{"N", "[", 
+       RowBox[{"ifSwitch", "/", "n"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "\"\<Probability of Wins by Method\>\"", "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<Stay Wins = \>\"", ",", "stayprob"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<Switch Wins = \>\"", ",", " ", "switchprob"}], "]"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8168210639632683`*^9, 3.8168211723465977`*^9}, {
+  3.8168212198126993`*^9, 3.816821464318598*^9}, {3.8168215061838484`*^9, 
+  3.816821720268732*^9}, {3.816821940938126*^9, 3.8168220170442786`*^9}, {
+  3.816827167360582*^9, 3.816827167611149*^9}, {3.8168272222557845`*^9, 
+  3.816827263185727*^9}},
+ CellLabel->
+  "In[343]:=",ExpressionUUID->"2ff45bd1-a605-4e6a-b4e1-6dac5f176d3c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"montyHall", "[", "1000", "]"}]], "Input",
+ CellChangeTimes->{{3.816821491426786*^9, 3.816821500325934*^9}},
+ CellLabel->
+  "In[344]:=",ExpressionUUID->"ea32b6a1-82fc-4dda-97f7-e746eccd5aae"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"Probability of Wins by Method\"\>"], "Print",
+ CellChangeTimes->{
+  3.816821857852845*^9, 3.8168219482299747`*^9, {3.816827229801973*^9, 
+   3.8168272661919165`*^9}, 3.8168296875868835`*^9, 3.816829753047984*^9, 
+   3.8169028555745397`*^9, 3.816909330633631*^9, 3.816911536979682*^9},
+ CellLabel->
+  "During evaluation of \
+In[344]:=",ExpressionUUID->"e20ad29c-97ea-4111-bb32-7d89df488ec6"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Stay Wins = \"\>", "\[InvisibleSpace]", "0.336`"}],
+  SequenceForm["Stay Wins = ", 0.336],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.816821857852845*^9, 3.8168219482299747`*^9, {3.816827229801973*^9, 
+   3.8168272661919165`*^9}, 3.8168296875868835`*^9, 3.816829753047984*^9, 
+   3.8169028555745397`*^9, 3.816909330633631*^9, 3.8169115369826736`*^9},
+ CellLabel->
+  "During evaluation of \
+In[344]:=",ExpressionUUID->"268412f6-8ab0-4135-964d-6df8d3760d35"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Switch Wins = \"\>", "\[InvisibleSpace]", "0.664`"}],
+  SequenceForm["Switch Wins = ", 0.664],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.816821857852845*^9, 3.8168219482299747`*^9, {3.816827229801973*^9, 
+   3.8168272661919165`*^9}, 3.8168296875868835`*^9, 3.816829753047984*^9, 
+   3.8169028555745397`*^9, 3.816909330633631*^9, 3.816911536988206*^9},
+ CellLabel->
+  "During evaluation of \
+In[344]:=",ExpressionUUID->"66c0dcdd-5edf-4227-a896-bf7cfd41a101"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The Monte Fall Problem", "Section",
+ CellChangeTimes->{{3.816819312331614*^9, 
+  3.8168193234161634`*^9}},ExpressionUUID->"c77262b4-23a2-48d1-a20e-\
+251ed7f6db13"],
+
+Cell["\<\
+In the case of the Monte Fall Problem, if the host accidentally open the door \
+to the car, the game is over. However, when the host fall and open the door \
+of a goat, the game continues. In this case, the probability of winning will \
+be the same regardless of switching. There is a probability of 1/2 of winning \
+when switching door and staying at the same door. \
+\>", "Text",
+ CellChangeTimes->{{3.8168282191315613`*^9, 
+  3.816828362015642*^9}},ExpressionUUID->"baf570fc-7763-4eba-8f30-\
+165963a69101"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"montyFall", "[", "n_", "]"}], ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "car", ",", "myguess", ",", "open", ",", "ifStay", ",", " ", "ifSwitch", 
+      ",", " ", "stayprob", ",", " ", "switchprob", ",", " ", "openCar", ",", 
+      "m"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"car", " ", ":=", " ", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", "n"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"myguess", " ", ":=", " ", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", "n"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"open", " ", ":=", " ", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", "n"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"openCar", " ", "=", " ", 
+      RowBox[{"Count", "[", 
+       RowBox[{
+        RowBox[{"Transpose", "[", 
+         RowBox[{"{", 
+          RowBox[{"car", ",", "open"}], "}"}], "]"}], ",", 
+        RowBox[{"Drop", "[", 
+         RowBox[{"{", 
+          RowBox[{"match_", ",", "match_"}], "}"}], "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{"car", ",", "open"}], "}"}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"match_", ",", "match_"}], "}"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"m", " ", "=", " ", 
+      RowBox[{"n", "-", "openCar"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"ifStay", " ", "=", " ", 
+      RowBox[{"Count", "[", 
+       RowBox[{
+        RowBox[{"Transpose", "[", 
+         RowBox[{"{", 
+          RowBox[{"car", ",", "myguess"}], "}"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"match_", ",", "match_"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ifSwitch", " ", "=", " ", 
+      RowBox[{"m", "-", "ifStay"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"stayprob", " ", "=", " ", 
+      RowBox[{"N", "[", 
+       RowBox[{"ifStay", "/", "m"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"switchprob", " ", "=", " ", 
+      RowBox[{"N", "[", 
+       RowBox[{"ifSwitch", "/", "m"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "\"\<Probability of Wins by Method\>\"", "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<Stay Wins = \>\"", ",", "stayprob"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<Switch Wins = \>\"", ",", " ", "switchprob"}], "]"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8168267821146564`*^9, 3.8168268885758142`*^9}, {
+  3.81682698835807*^9, 3.816827021051119*^9}, {3.8168270697665167`*^9, 
+  3.81682708353047*^9}, {3.81682727107878*^9, 3.816827275977043*^9}, {
+  3.8168273187905483`*^9, 3.8168273722494326`*^9}, {3.816827500009901*^9, 
+  3.816827540931814*^9}, {3.816827590429922*^9, 3.8168277201040707`*^9}, {
+  3.8168277812438884`*^9, 3.8168278271690207`*^9}, {3.8168278672501717`*^9, 
+  3.8168278826520944`*^9}, {3.8168279403782225`*^9, 3.8168279544384403`*^9}, {
+  3.8168279859467473`*^9, 3.8168280010701404`*^9}, {3.816828068217636*^9, 
+  3.8168281015082293`*^9}, {3.816828145846321*^9, 3.81682819924897*^9}, {
+  3.81690552808193*^9, 3.816905529188983*^9}},
+ CellLabel->
+  "In[345]:=",ExpressionUUID->"20e31be9-00a5-4f76-9791-d2154bed8bde"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"montyFall", "[", "1000", "]"}]], "Input",
+ CellChangeTimes->{{3.8168278323928328`*^9, 3.816827839284765*^9}},
+ CellLabel->
+  "In[346]:=",ExpressionUUID->"2546b32e-fe19-4790-b72e-a946985879d3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"Probability of Wins by Method\"\>"], "Print",
+ CellChangeTimes->{{3.8168279575959663`*^9, 3.8168280099735165`*^9}, 
+   3.8168281539006143`*^9, {3.8168282066620417`*^9, 3.816828209389022*^9}, 
+   3.8168296876197968`*^9, 3.8168297530749516`*^9, 3.816902855600807*^9, {
+   3.816905533838684*^9, 3.816905538497986*^9}, 3.8169093306911173`*^9, 
+   3.816911537008152*^9},
+ CellLabel->
+  "During evaluation of \
+In[346]:=",ExpressionUUID->"9f8c0e5f-5991-4fee-a8f8-29dba27a85c4"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Stay Wins = \"\>", "\[InvisibleSpace]", "0.5045592705167173`"}],
+  SequenceForm["Stay Wins = ", 0.5045592705167173],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.8168279575959663`*^9, 3.8168280099735165`*^9}, 
+   3.8168281539006143`*^9, {3.8168282066620417`*^9, 3.816828209389022*^9}, 
+   3.8168296876197968`*^9, 3.8168297530749516`*^9, 3.816902855600807*^9, {
+   3.816905533838684*^9, 3.816905538497986*^9}, 3.8169093306911173`*^9, 
+   3.8169115370111456`*^9},
+ CellLabel->
+  "During evaluation of \
+In[346]:=",ExpressionUUID->"a9ce894c-e11e-4ada-819f-9f4f9c052038"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Switch Wins = \"\>", "\[InvisibleSpace]", 
+   "0.49544072948328266`"}],
+  SequenceForm["Switch Wins = ", 0.49544072948328266`],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.8168279575959663`*^9, 3.8168280099735165`*^9}, 
+   3.8168281539006143`*^9, {3.8168282066620417`*^9, 3.816828209389022*^9}, 
+   3.8168296876197968`*^9, 3.8168297530749516`*^9, 3.816902855600807*^9, {
+   3.816905533838684*^9, 3.816905538497986*^9}, 3.8169093306911173`*^9, 
+   3.8169115370161357`*^9},
+ CellLabel->
+  "During evaluation of \
+In[346]:=",ExpressionUUID->"84307d38-8e8d-4db5-98a2-3574154fc567"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.816828214763923*^9, 3.816828216169495*^9}},
+ CellLabel->
+  "In[347]:=",ExpressionUUID->"46407f27-f705-45df-ab72-93a15746479a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The Monte Crawl Problem", "Section",
+ CellChangeTimes->{{3.8168193315849876`*^9, 
+  3.8168193370026293`*^9}},ExpressionUUID->"d7a96a87-a096-4887-933f-\
+65de1c785637"],
+
+Cell["\<\
+This problem is dependent on which number door the host will open.  There are \
+two events that can occur for this problem.  
+
+The first event that can occur is when the host passes the first door he \
+could have open. This extra information insinuate that the prize is behind \
+the door, and that the door of the current guess is a goat. Therefore, there \
+is a probability of 1 of winning if you switch door and 0 if you stay. This \
+occurs when the host open a high number door (Door #3), when you select one \
+of the low number door (Door #1 or #2). This also occur when the host open \
+Door #2 when you initially choose Door #3, meaning the car is being Door #1. \
+The list of this event would be {1, 2, 3}, {2, 1, 3}, and {1, 3, 2}. (in the \
+form {car,initial guess, open} ) \
+\>", "Text",
+ CellChangeTimes->{{3.81683019110274*^9, 3.816830281229985*^9}, {
+  3.8169059379579763`*^9, 3.8169061081511555`*^9}, {3.8169115583398623`*^9, 
+  3.8169116618087606`*^9}, {3.8169116998892293`*^9, 3.8169117544162903`*^9}, {
+  3.8169118621414957`*^9, 3.816911981193207*^9}, {3.816912084853448*^9, 
+  3.8169122563218746`*^9}, {3.816912369018284*^9, 3.8169123775446444`*^9}, {
+  3.816912577585095*^9, 
+  3.8169127192273197`*^9}},ExpressionUUID->"f438faf4-c195-44a9-b2c9-\
+55f962ab7354"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"montyCrawlsit1", "[", "n_", "]"}], ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "car", ",", " ", "myguess", ",", " ", "ifStay", ",", " ", "ifSwitch", 
+      ",", " ", "stayprob", ",", " ", "switchprob", ",", "m", ",", "game", 
+      ",", "open"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"car", " ", ":=", " ", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", "n"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"myguess", " ", ":=", " ", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", "n"}], "]"}]}], " ", ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"open", ":=", " ", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", "n"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ifSwitch", " ", "=", 
+      RowBox[{"m", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"Count", "[", 
+         RowBox[{
+          RowBox[{"Transpose", "[", 
+           RowBox[{"{", 
+            RowBox[{"car", ",", "myguess", ",", "open"}], "}"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "]"}], "+", " ", 
+        RowBox[{"Count", "[", 
+         RowBox[{
+          RowBox[{"Transpose", "[", 
+           RowBox[{"{", 
+            RowBox[{"car", ",", "myguess", ",", "open"}], "}"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "1", ",", "3"}], "}"}]}], "]"}], " ", "+", " ", 
+        RowBox[{"Count", "[", 
+         RowBox[{
+          RowBox[{"Transpose", "[", 
+           RowBox[{"{", 
+            RowBox[{"car", ",", "myguess", ",", "open"}], "}"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "3", ",", "2"}], "}"}]}], "]"}]}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{
+       "Since", " ", "you", " ", "cannot", " ", "win", " ", "unless", " ", 
+        "you", " ", "switch"}], ",", " ", 
+       RowBox[{
+       "the", " ", "number", " ", "of", " ", "trials", " ", "that", " ", 
+        "win", " ", "is", " ", "the", " ", "same", " ", "as", " ", "the", " ",
+         "number", " ", "of", " ", "ifSwitch"}]}], "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"ifStay", " ", "=", " ", 
+      RowBox[{"m", "-", "ifSwitch"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"stayprob", " ", "=", " ", 
+      RowBox[{"N", "[", 
+       RowBox[{"ifStay", "/", "m"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"switchprob", " ", "=", " ", 
+      RowBox[{"N", "[", 
+       RowBox[{"ifSwitch", "/", "m"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "\"\<Probability of Wins by Method\>\"", "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<Stay Wins = \>\"", ",", "stayprob"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<Switch Wins = \>\"", ",", " ", "switchprob"}], "]"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8168284574087873`*^9, 3.816828517327834*^9}, {
+   3.8168285562032175`*^9, 3.8168285866908913`*^9}, {3.816828767691957*^9, 
+   3.8168288077722936`*^9}, {3.816829009936627*^9, 3.816829186379285*^9}, {
+   3.8168293210548067`*^9, 3.8168293365062137`*^9}, {3.8168293997734528`*^9, 
+   3.8168294015097466`*^9}, {3.8168294320714226`*^9, 
+   3.8168296740140533`*^9}, {3.816829788487855*^9, 3.8168298395630755`*^9}, {
+   3.8168299511622396`*^9, 3.816830169865971*^9}, {3.816830289027234*^9, 
+   3.8168302898013597`*^9}, {3.816830578697296*^9, 3.816830642022521*^9}, {
+   3.816830701254662*^9, 3.816830711120751*^9}, {3.8168307505232673`*^9, 
+   3.8168307994763293`*^9}, {3.816830844234747*^9, 3.816831094509287*^9}, {
+   3.816831166063731*^9, 3.816831259494791*^9}, {3.8169017692286863`*^9, 
+   3.81690176940944*^9}, {3.816902081177054*^9, 3.8169021282751293`*^9}, {
+   3.816902209093093*^9, 3.8169022642889767`*^9}, {3.8169022988251896`*^9, 
+   3.8169023706402984`*^9}, {3.8169024349086227`*^9, 
+   3.8169024878413925`*^9}, {3.8169025265394435`*^9, 3.816902668182411*^9}, {
+   3.816902750221562*^9, 3.816902767858354*^9}, {3.816902823016281*^9, 
+   3.8169028685467606`*^9}, {3.816902901126234*^9, 3.8169029311617165`*^9}, {
+   3.816902967414919*^9, 3.8169029737236843`*^9}, {3.8169030273368406`*^9, 
+   3.816903107594468*^9}, {3.8169031537694902`*^9, 3.8169032172017946`*^9}, {
+   3.816903274557081*^9, 3.8169032916761546`*^9}, {3.8169033302899*^9, 
+   3.8169033467370586`*^9}, {3.816903420309473*^9, 3.816903495049302*^9}, 
+   3.816903532354105*^9, {3.816903624322275*^9, 3.816903626305998*^9}, {
+   3.8169036569700375`*^9, 3.816903657182237*^9}, {3.8169036887002196`*^9, 
+   3.8169037256013393`*^9}, {3.816903777449605*^9, 3.816903839338113*^9}, {
+   3.816903907911148*^9, 3.816903908319194*^9}, {3.816903964934391*^9, 
+   3.8169039945646915`*^9}, {3.816904040502137*^9, 3.816904449617781*^9}, {
+   3.816904507944173*^9, 3.8169045382080283`*^9}, {3.816904636588022*^9, 
+   3.816904654071081*^9}, 3.8169047051760716`*^9, {3.8169047478246455`*^9, 
+   3.8169048171298003`*^9}, {3.816904872150689*^9, 3.816904876726003*^9}, {
+   3.816904912808259*^9, 3.8169049153811703`*^9}, {3.8169049492270527`*^9, 
+   3.816904949909017*^9}, {3.8169050007606225`*^9, 3.8169050511717725`*^9}, {
+   3.8169051102001495`*^9, 3.816905355850072*^9}, {3.816905426873206*^9, 
+   3.816905428348132*^9}, {3.816905458521487*^9, 3.816905485546357*^9}, {
+   3.816905585974483*^9, 3.816905643436121*^9}, {3.816905674665761*^9, 
+   3.81690569380153*^9}, {3.816905727523313*^9, 3.8169059286440916`*^9}, {
+   3.816907072957553*^9, 3.81690707424518*^9}, {3.816908736389795*^9, 
+   3.816908757794049*^9}, {3.816908793773655*^9, 3.816908993842044*^9}, {
+   3.8169090254916363`*^9, 3.8169090288158054`*^9}, {3.816909126534828*^9, 
+   3.8169091270278883`*^9}, {3.8169092127289467`*^9, 3.816909511350322*^9}, {
+   3.816909544114546*^9, 3.816909840810873*^9}, {3.8169100089476204`*^9, 
+   3.816910010981369*^9}, {3.816910665284748*^9, 3.816910742810758*^9}, {
+   3.8169107731302195`*^9, 3.8169108122894573`*^9}, {3.816910866293294*^9, 
+   3.81691088605672*^9}, {3.816911002233177*^9, 3.816911036376878*^9}, {
+   3.8169110686378384`*^9, 3.816911075631939*^9}, {3.8169111110620265`*^9, 
+   3.8169112116905394`*^9}},
+ CellLabel->
+  "In[348]:=",ExpressionUUID->"630e2a1f-e3a9-4085-9843-c9fd7f9fc6c8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"montyCrawlsit1", "[", "1000", "]"}]], "Input",
+ CellChangeTimes->{{3.816831229836066*^9, 3.816831247104415*^9}, {
+   3.8169024979038367`*^9, 3.816902506341082*^9}, 3.8169026566016006`*^9, {
+   3.8169033883816175`*^9, 3.8169033933532743`*^9}, {3.816903854861267*^9, 
+   3.816903864920769*^9}, {3.8169044786017704`*^9, 3.8169044802885637`*^9}, {
+   3.8169045411636353`*^9, 3.8169045415062475`*^9}, {3.816904971254026*^9, 
+   3.8169049739894495`*^9}, {3.816905156634818*^9, 3.8169051579889035`*^9}, {
+   3.816905358490353*^9, 3.8169053605186157`*^9}, {3.8169056047860723`*^9, 
+   3.816905631043767*^9}, {3.8169087608754625`*^9, 3.816908762400703*^9}, {
+   3.8169090046053944`*^9, 3.816909005168024*^9}, {3.816909055468051*^9, 
+   3.8169090769027805`*^9}, {3.816909669132305*^9, 3.8169096693342443`*^9}, {
+   3.816909851645073*^9, 3.8169098521654725`*^9}, {3.816910746938711*^9, 
+   3.8169107479221373`*^9}},
+ CellLabel->
+  "In[349]:=",ExpressionUUID->"e285e7c4-2ecc-46ae-b980-430abc949260"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"Probability of Wins by Method\"\>"], "Print",
+ CellChangeTimes->{
+  3.816904578672782*^9, {3.8169047117198334`*^9, 3.8169047278162785`*^9}, {
+   3.8169048209516196`*^9, 3.816904822839362*^9}, {3.8169049282448883`*^9, 
+   3.8169049326142383`*^9}, 3.8169049748457103`*^9, 3.816905008880417*^9, 
+   3.816905055478701*^9, 3.8169051582517433`*^9, {3.8169051980727577`*^9, 
+   3.816905232425947*^9}, 3.816905361081798*^9, 3.8169054335718384`*^9, 
+   3.8169054711820188`*^9, {3.816905597512843*^9, 3.8169056449985614`*^9}, {
+   3.8169056834653673`*^9, 3.8169057319863915`*^9}, 3.8169057643012094`*^9, {
+   3.816905796918318*^9, 3.8169058914404764`*^9}, 3.816905924077303*^9, {
+   3.816907068029389*^9, 3.8169070823010883`*^9}, {3.816908763014501*^9, 
+   3.816908767200387*^9}, {3.81690925753388*^9, 3.8169093307214766`*^9}, {
+   3.8169096623380785`*^9, 3.8169096757278833`*^9}, 3.816909721573987*^9, {
+   3.816909761535651*^9, 3.8169097942959385`*^9}, {3.816909846446148*^9, 
+   3.816909852744152*^9}, {3.816910748474318*^9, 3.816910751803421*^9}, {
+   3.8169108165731025`*^9, 3.816910833545123*^9}, {3.816911207133193*^9, 
+   3.8169112183833065`*^9}, 3.8169115370419145`*^9},
+ CellLabel->
+  "During evaluation of \
+In[349]:=",ExpressionUUID->"3244da29-601b-402e-8af1-97ce5db1c9e4"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Stay Wins = \"\>", "\[InvisibleSpace]", "0.`"}],
+  SequenceForm["Stay Wins = ", 0.],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.816904578672782*^9, {3.8169047117198334`*^9, 3.8169047278162785`*^9}, {
+   3.8169048209516196`*^9, 3.816904822839362*^9}, {3.8169049282448883`*^9, 
+   3.8169049326142383`*^9}, 3.8169049748457103`*^9, 3.816905008880417*^9, 
+   3.816905055478701*^9, 3.8169051582517433`*^9, {3.8169051980727577`*^9, 
+   3.816905232425947*^9}, 3.816905361081798*^9, 3.8169054335718384`*^9, 
+   3.8169054711820188`*^9, {3.816905597512843*^9, 3.8169056449985614`*^9}, {
+   3.8169056834653673`*^9, 3.8169057319863915`*^9}, 3.8169057643012094`*^9, {
+   3.816905796918318*^9, 3.8169058914404764`*^9}, 3.816905924077303*^9, {
+   3.816907068029389*^9, 3.8169070823010883`*^9}, {3.816908763014501*^9, 
+   3.816908767200387*^9}, {3.81690925753388*^9, 3.8169093307214766`*^9}, {
+   3.8169096623380785`*^9, 3.8169096757278833`*^9}, 3.816909721573987*^9, {
+   3.816909761535651*^9, 3.8169097942959385`*^9}, {3.816909846446148*^9, 
+   3.816909852744152*^9}, {3.816910748474318*^9, 3.816910751803421*^9}, {
+   3.8169108165731025`*^9, 3.816910833545123*^9}, {3.816911207133193*^9, 
+   3.8169112183833065`*^9}, 3.816911537046175*^9},
+ CellLabel->
+  "During evaluation of \
+In[349]:=",ExpressionUUID->"989b4a3e-0322-42e1-9241-0de78f04eec7"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Switch Wins = \"\>", "\[InvisibleSpace]", "1.`"}],
+  SequenceForm["Switch Wins = ", 1.],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.816904578672782*^9, {3.8169047117198334`*^9, 3.8169047278162785`*^9}, {
+   3.8169048209516196`*^9, 3.816904822839362*^9}, {3.8169049282448883`*^9, 
+   3.8169049326142383`*^9}, 3.8169049748457103`*^9, 3.816905008880417*^9, 
+   3.816905055478701*^9, 3.8169051582517433`*^9, {3.8169051980727577`*^9, 
+   3.816905232425947*^9}, 3.816905361081798*^9, 3.8169054335718384`*^9, 
+   3.8169054711820188`*^9, {3.816905597512843*^9, 3.8169056449985614`*^9}, {
+   3.8169056834653673`*^9, 3.8169057319863915`*^9}, 3.8169057643012094`*^9, {
+   3.816905796918318*^9, 3.8169058914404764`*^9}, 3.816905924077303*^9, {
+   3.816907068029389*^9, 3.8169070823010883`*^9}, {3.816908763014501*^9, 
+   3.816908767200387*^9}, {3.81690925753388*^9, 3.8169093307214766`*^9}, {
+   3.8169096623380785`*^9, 3.8169096757278833`*^9}, 3.816909721573987*^9, {
+   3.816909761535651*^9, 3.8169097942959385`*^9}, {3.816909846446148*^9, 
+   3.816909852744152*^9}, {3.816910748474318*^9, 3.816910751803421*^9}, {
+   3.8169108165731025`*^9, 3.816910833545123*^9}, {3.816911207133193*^9, 
+   3.8169112183833065`*^9}, 3.81691153705116*^9},
+ CellLabel->
+  "During evaluation of \
+In[349]:=",ExpressionUUID->"fce64b8b-f91e-4804-aaa3-22b4c8877bf3"]
+}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+In the second situation, the host goes to the first door and does not skip. \
+During this game, there is no extra information given by the host. Since the \
+host does not provide any extra information, the only event where you win by \
+staying with your initial pick is when you pick the door with the car. The \
+list of this event would be {1, 1, 2}, {2, 2, 1}, {3, 3, 1}. (in the form \
+{car,initial guess, open} ) Otherwise, you would have to switch from your \
+initial pick to win. The list of this event would be {3, 1, 2}, {3, 2, 1}, \
+{2, 3, 1}. (in the form {car,initial guess, open} ) Therefore, the \
+probability of choosing the door with the car is 1/2 and choosing the door \
+with a goat is 1/2. \
+\>", "Text",
+ CellChangeTimes->{{3.8169117587831826`*^9, 3.8169118545416756`*^9}, {
+  3.8169120158659096`*^9, 3.8169120680690994`*^9}, {3.8169122916473017`*^9, 
+  3.816912306718548*^9}, {3.8169123890557184`*^9, 
+  3.8169125610535593`*^9}},ExpressionUUID->"ed89be48-001d-446c-9fb0-\
+30a7e25fd1f2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"montyCrawlsit2", "[", "n_", "]"}], ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "car", ",", "myguess", ",", "open", ",", "openCar", ",", " ", 
+      "openMyguess", ",", "m"}], "}"}], ",", " ", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"car", " ", ":=", " ", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", "n"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"myguess", " ", ":=", " ", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", "n"}], "]"}]}], ";", 
+     RowBox[{"open", " ", ":=", " ", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", "n"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"m", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"Count", "[", 
+        RowBox[{
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{"car", ",", "myguess", ",", "open"}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "1", ",", "2"}], "}"}]}], "]"}], "+", " ", 
+       RowBox[{"Count", "[", 
+        RowBox[{
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{"car", ",", "myguess", ",", "open"}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"3", ",", "1", ",", "2"}], "}"}]}], "]"}], " ", "+", " ", 
+       RowBox[{"Count", "[", 
+        RowBox[{
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{"car", ",", "myguess", ",", "open"}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"2", ",", "2", ",", "1"}], "}"}]}], "]"}], "+", 
+       RowBox[{"Count", "[", 
+        RowBox[{
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{"car", ",", "myguess", ",", "open"}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"3", ",", "2", ",", "1"}], "}"}]}], "]"}], "+", " ", 
+       RowBox[{"Count", "[", 
+        RowBox[{
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{"car", ",", "myguess", ",", "open"}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"2", ",", "3", ",", "1"}], "}"}]}], "]"}], " ", "+", " ", 
+       RowBox[{"Count", "[", 
+        RowBox[{
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{"car", ",", "myguess", ",", "open"}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"3", ",", "3", ",", "1"}], "}"}]}], "]"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ifStay", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"Count", "[", 
+        RowBox[{
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{"car", ",", "myguess", ",", "open"}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "1", ",", "2"}], "}"}]}], "]"}], "+", " ", 
+       RowBox[{"Count", "[", 
+        RowBox[{
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{"car", ",", "myguess", ",", "open"}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"2", ",", "2", ",", "1"}], "}"}]}], "]"}], " ", "+", " ", 
+       RowBox[{"Count", "[", 
+        RowBox[{
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{"car", ",", "myguess", ",", "open"}], "}"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"3", ",", "3", ",", "1"}], "}"}]}], "]"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ifSwitch", " ", "=", " ", 
+      RowBox[{"m", " ", "-", "ifStay"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"stayprob", " ", "=", " ", 
+      RowBox[{"N", "[", 
+       RowBox[{"ifStay", "/", "m"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"switchprob", " ", "=", " ", 
+      RowBox[{"N", "[", 
+       RowBox[{"ifSwitch", "/", "m"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "\"\<Probability of Wins by Method\>\"", "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<Stay Wins = \>\"", ",", "stayprob"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<Switch Wins = \>\"", ",", " ", "switchprob"}], "]"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8169062670710173`*^9, 3.816906267962598*^9}, {
+   3.8169063075891967`*^9, 3.8169064839692063`*^9}, {3.816906560815487*^9, 
+   3.816906615861312*^9}, {3.8169066491803474`*^9, 3.816906666853667*^9}, {
+   3.8169067466404095`*^9, 3.8169067747321215`*^9}, {3.816906860171455*^9, 
+   3.8169068726287055`*^9}, {3.81690690372029*^9, 3.8169069320049706`*^9}, {
+   3.8169069723786526`*^9, 3.816907050155152*^9}, {3.8169071684662914`*^9, 
+   3.816907238659318*^9}, {3.8169072780285206`*^9, 3.816907366970277*^9}, 
+   3.8169079074238644`*^9, {3.8169079823383074`*^9, 3.8169079973879695`*^9}, {
+   3.8169080363956594`*^9, 3.816908069205406*^9}, {3.8169081115678453`*^9, 
+   3.816908167528343*^9}, {3.8169082251061525`*^9, 3.8169082276453276`*^9}, {
+   3.816908279889863*^9, 3.8169083637054987`*^9}, {3.8169084041503344`*^9, 
+   3.8169084336232333`*^9}, {3.8169084919072003`*^9, 3.816908550970867*^9}, 
+   3.816908639929327*^9, {3.8169112528132143`*^9, 3.816911405165187*^9}, {
+   3.816911446437065*^9, 3.816911501271901*^9}},
+ CellLabel->
+  "In[350]:=",ExpressionUUID->"e023b0d7-5d7c-4dc4-b154-92fd74af2acb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"montyCrawlsit2", "[", "1000", "]"}]], "Input",
+ CellChangeTimes->{{3.81690650544775*^9, 3.81690651579523*^9}, {
+  3.8169068756801567`*^9, 3.8169068758110805`*^9}, {3.816908437130001*^9, 
+  3.8169084380397477`*^9}},
+ CellLabel->
+  "In[351]:=",ExpressionUUID->"ed815c7d-dee2-470e-84aa-6f0f80563b8d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"Probability of Wins by Method\"\>"], "Print",
+ CellChangeTimes->{
+  3.816906519144462*^9, 3.816906567501131*^9, 3.8169066195411863`*^9, {
+   3.816906654696113*^9, 3.8169066731263475`*^9}, 3.8169067807372627`*^9, 
+   3.816906876455161*^9, {3.8169069077878513`*^9, 3.8169069185678816`*^9}, {
+   3.8169069996912656`*^9, 3.8169070149542847`*^9}, {3.81690717476217*^9, 
+   3.8169071997255745`*^9}, 3.8169072448793736`*^9, {3.8169073487325864`*^9, 
+   3.8169073597494435`*^9}, {3.816908137871464*^9, 3.81690815508143*^9}, 
+   3.8169082351501136`*^9, {3.8169082878650837`*^9, 3.8169083308514085`*^9}, {
+   3.8169084104254923`*^9, 3.8169084495454884`*^9}, {3.8169084995031805`*^9, 
+   3.8169085544153843`*^9}, 3.8169093307900004`*^9, {3.8169114938735733`*^9, 
+   3.8169115370762043`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[351]:=",ExpressionUUID->"23f53ff9-f858-4991-a629-2b5601c648ba"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Stay Wins = \"\>", "\[InvisibleSpace]", "0.4838709677419355`"}],
+  SequenceForm["Stay Wins = ", 0.4838709677419355],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.816906519144462*^9, 3.816906567501131*^9, 3.8169066195411863`*^9, {
+   3.816906654696113*^9, 3.8169066731263475`*^9}, 3.8169067807372627`*^9, 
+   3.816906876455161*^9, {3.8169069077878513`*^9, 3.8169069185678816`*^9}, {
+   3.8169069996912656`*^9, 3.8169070149542847`*^9}, {3.81690717476217*^9, 
+   3.8169071997255745`*^9}, 3.8169072448793736`*^9, {3.8169073487325864`*^9, 
+   3.8169073597494435`*^9}, {3.816908137871464*^9, 3.81690815508143*^9}, 
+   3.8169082351501136`*^9, {3.8169082878650837`*^9, 3.8169083308514085`*^9}, {
+   3.8169084104254923`*^9, 3.8169084495454884`*^9}, {3.8169084995031805`*^9, 
+   3.8169085544153843`*^9}, 3.8169093307900004`*^9, {3.8169114938735733`*^9, 
+   3.8169115370821886`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[351]:=",ExpressionUUID->"2f03ab76-985c-4f2e-9a54-12c5ea5c4fda"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Switch Wins = \"\>", "\[InvisibleSpace]", 
+   "0.5161290322580645`"}],
+  SequenceForm["Switch Wins = ", 0.5161290322580645],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.816906519144462*^9, 3.816906567501131*^9, 3.8169066195411863`*^9, {
+   3.816906654696113*^9, 3.8169066731263475`*^9}, 3.8169067807372627`*^9, 
+   3.816906876455161*^9, {3.8169069077878513`*^9, 3.8169069185678816`*^9}, {
+   3.8169069996912656`*^9, 3.8169070149542847`*^9}, {3.81690717476217*^9, 
+   3.8169071997255745`*^9}, 3.8169072448793736`*^9, {3.8169073487325864`*^9, 
+   3.8169073597494435`*^9}, {3.816908137871464*^9, 3.81690815508143*^9}, 
+   3.8169082351501136`*^9, {3.8169082878650837`*^9, 3.8169083308514085`*^9}, {
+   3.8169084104254923`*^9, 3.8169084495454884`*^9}, {3.8169084995031805`*^9, 
+   3.8169085544153843`*^9}, 3.8169093307900004`*^9, {3.8169114938735733`*^9, 
+   3.816911537085044*^9}},
+ CellLabel->
+  "During evaluation of \
+In[351]:=",ExpressionUUID->"ddc61b63-f780-45ab-9686-04b35c03984c"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1152., 585.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"db1a753b-0127-47be-954c-0294e227222c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 193, 3, 158, "Title",ExpressionUUID->"339054c9-bf3f-4a70-ab5c-39bd04882bc1"],
+Cell[CellGroupData[{
+Cell[798, 29, 171, 3, 67, "Section",ExpressionUUID->"f600de16-529d-44cc-9689-7f03430843a4"],
+Cell[972, 34, 1010, 15, 265, "Text",ExpressionUUID->"0a8adbb8-e22d-4458-b47d-a9cdc5396ecb"],
+Cell[1985, 51, 2261, 54, 283, "Input",ExpressionUUID->"2ff45bd1-a605-4e6a-b4e1-6dac5f176d3c"],
+Cell[CellGroupData[{
+Cell[4271, 109, 214, 4, 28, "Input",ExpressionUUID->"ea32b6a1-82fc-4dda-97f7-e746eccd5aae"],
+Cell[CellGroupData[{
+Cell[4510, 117, 408, 7, 21, "Print",ExpressionUUID->"e20ad29c-97ea-4111-bb32-7d89df488ec6"],
+Cell[4921, 126, 516, 11, 21, "Print",ExpressionUUID->"268412f6-8ab0-4135-964d-6df8d3760d35"],
+Cell[5440, 139, 518, 11, 21, "Print",ExpressionUUID->"66c0dcdd-5edf-4227-a896-bf7cfd41a101"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6019, 157, 169, 3, 67, "Section",ExpressionUUID->"c77262b4-23a2-48d1-a20e-251ed7f6db13"],
+Cell[6191, 162, 519, 9, 81, "Text",ExpressionUUID->"baf570fc-7763-4eba-8f30-165963a69101"],
+Cell[6713, 173, 3594, 82, 322, "Input",ExpressionUUID->"20e31be9-00a5-4f76-9791-d2154bed8bde"],
+Cell[CellGroupData[{
+Cell[10332, 259, 216, 4, 28, "Input",ExpressionUUID->"2546b32e-fe19-4790-b72e-a946985879d3"],
+Cell[CellGroupData[{
+Cell[10573, 267, 489, 8, 21, "Print",ExpressionUUID->"9f8c0e5f-5991-4fee-a8f8-29dba27a85c4"],
+Cell[11065, 277, 623, 12, 21, "Print",ExpressionUUID->"a9ce894c-e11e-4ada-819f-9f4f9c052038"],
+Cell[11691, 291, 634, 13, 21, "Print",ExpressionUUID->"84307d38-8e8d-4db5-98a2-3574154fc567"]
+}, Open  ]]
+}, Open  ]],
+Cell[12352, 308, 175, 3, 28, "Input",ExpressionUUID->"46407f27-f705-45df-ab72-93a15746479a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12564, 316, 172, 3, 67, "Section",ExpressionUUID->"d7a96a87-a096-4887-933f-65de1c785637"],
+Cell[12739, 321, 1288, 21, 150, "Text",ExpressionUUID->"f438faf4-c195-44a9-b2c9-55f962ab7354"],
+Cell[14030, 344, 6566, 126, 283, "Input",ExpressionUUID->"630e2a1f-e3a9-4085-9843-c9fd7f9fc6c8"],
+Cell[CellGroupData[{
+Cell[20621, 474, 1011, 15, 28, "Input",ExpressionUUID->"e285e7c4-2ecc-46ae-b980-430abc949260"],
+Cell[CellGroupData[{
+Cell[21657, 493, 1293, 19, 21, "Print",ExpressionUUID->"3244da29-601b-402e-8af1-97ce5db1c9e4"],
+Cell[22953, 514, 1391, 23, 21, "Print",ExpressionUUID->"989b4a3e-0322-42e1-9241-0de78f04eec7"],
+Cell[24347, 539, 1394, 23, 21, "Print",ExpressionUUID->"fce64b8b-f91e-4804-aaa3-22b4c8877bf3"]
+}, Open  ]]
+}, Open  ]],
+Cell[25768, 566, 1016, 16, 104, "Text",ExpressionUUID->"ed89be48-001d-446c-9fb0-30a7e25fd1f2"],
+Cell[26787, 584, 5494, 127, 302, "Input",ExpressionUUID->"e023b0d7-5d7c-4dc4-b154-92fd74af2acb"],
+Cell[CellGroupData[{
+Cell[32306, 715, 321, 6, 28, "Input",ExpressionUUID->"ed815c7d-dee2-470e-84aa-6f0f80563b8d"],
+Cell[CellGroupData[{
+Cell[32652, 725, 904, 14, 21, "Print",ExpressionUUID->"23f53ff9-f858-4991-a629-2b5601c648ba"],
+Cell[33559, 741, 1036, 18, 21, "Print",ExpressionUUID->"2f03ab76-985c-4f2e-9a54-12c5ea5c4fda"],
+Cell[34598, 761, 1042, 19, 21, "Print",ExpressionUUID->"ddc61b63-f780-45ab-9686-04b35c03984c"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
