@@ -1,0 +1,205 @@
+\documentclass[11pt]{article}
+\usepackage[top=1in, bottom=1.25in, left=1.25in, right=1.25in]{geometry}
+
+% See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+%\input{preamble}       %my preamble, that I use often or go to templates
+%
+%PREAMBLE EG MAY 16 2005
+%BEGINS
+\usepackage{amsmath, amsfonts,amssymb, latexsym, mathrsfs}
+\usepackage[all]{xy}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{bigints}
+\usepackage{relsize}%
+\pagenumbering{gobble}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\dx}{\; dx}
+\newcommand{\comment}[1]{}
+
+\begin{document}
+\begin{center}
+\noindent
+{\Large \sc MATH 140 Final Exam} \\
+Spring 2030\\
+\vspace{20pt}
+
+\end{center}
+\noindent Name: \rule{7.5cm}{.1mm} \hfill ID:\rule{3cm}{.1mm} \vspace{1cm}\\
+\vspace{2cm}\noindent Instructor: \rule{7.5cm}{.1mm}
+
+\vspace{10pt} \textbf{Instructions:}
+\begin{enumerate}
+  \item This is a closed book exam.
+  \item Show your answers and arguments for your answers in the space provided.
+  \item Answers without proper justification \textbf{will not} receive full credit.
+  \item Put your final answers in the provided answer boxes.
+  \item \textbf{Calculators and electronic devices are not allowed.}
+\end{enumerate}
+
+
+
+\newpage
+
+\pagenumbering{arabic}
+%%%%%%%%%%%%%%%%%%     Question 1     %%%%%%%%%%%%%%%%%%%%
+
+\textbf{Question 1. (24 points)} 
+Evaluate the limit or show that it does not exist. If it does not exist, 
+determine whether the limit is $\infty$, -$\infty$, or neither. 
+   
+(a)  $lim_{x\to3} \displaystyle \frac{x^2-x-6}{x^2-10x+21}$
+
+\vspace{6.5cm}
+
+(b)  $lim_{x\to\infty} \displaystyle \frac{2e^x+3e^{-x}}{5e^x-7e^{-x}}$
+
+\vspace{6.5cm}
+
+(c)  $lim_{x\to0} \displaystyle \frac{|x|}{x}$
+
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%      Question 2       %%%%%%%%%%%%%%%%%%%%%
+\textbf{\large Question 2. (24 points)}
+Differentiate the following functions.
+
+(a) $f(x) = \tan(x)$
+
+\vspace{6.5cm}
+
+(b) $f(x) = 2e^x + \frac{1}{\sqrt{x}} - x^4 + 3x^{\sqrt{5}} + 
+\pi^3 + \frac{e^2}{x}$
+
+\vspace{6.5cm}
+
+(c) $f(x) = \big{(}\sin{(7x)} + \frac{1}{2}\cos{(x)}\big{)}^{4}$
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%      Question 3       %%%%%%%%%%%%%%%%%%%%%%%
+\textbf{\large Question 3. (24 points)}
+Use the guidelines for curve sketching to sketch the graph of the
+following function: 
+\newline
+$$
+f(x) = \frac{x^3}{x-2}
+$$
+
+\vspace{6.5cm}
+
+%%%%%%%%%%%%%%%%%%       Question 4      %%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{\large Question 4. (24 points)}
+Let $x$ and $y$ be selected via the equation $x^2+xy+y^2=3$
+
+(a) Using implicit differentiation, express the derivative 
+$\frac{\partial y}{\partial x}$ in terms of $x$ and $y$.
+
+\vspace{6.5cm}
+
+(b) Find the equation of the line tangent to the curve given above 
+at the point $(1,-2)$.
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%      Question 5      %%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{\large Question 5. (24 points)} 
+Let $f(x) = 3x + \frac{27}{x}$. 
+
+(a) Find the critical points of $f$.
+
+\vspace{6.5cm}
+
+(b) For each critical point, determine whether $f$ has a local maximum,
+local minimum, or neither at that point. 
+
+\newpage 
+
+%%%%%%%%%%%%%%%%%%%       Question 6      %%%%%%%%%%%%%%%%%%%%%%%
+\textbf{\large Question 6. (24 points)} 
+Determine the maximum possible area of a rectangle of perimeter 30cm. 
+(For full credit, you need to prove that your answer is the maximum
+possible, using calculus.)
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%       Question 7      %%%%%%%%%%%%%%%%%%%%%
+\textbf{\large Question 7. (24 points)}
+In this problem, you must do part (a), however for full credit you
+only need to \underline{complete either part (b) or part (c)}, whichever you 
+choose.
+
+(a) Consider the function $f(x) = x^3 + 5x +7$. Show that there exists 
+a number $x_0$ such that $f(x_0) = 0$
+
+\vspace{6.5cm}
+
+(b) Find an interval of length $\frac{1}{2}$ or less containing the 
+number $x_0$ from part (a). (Your answer must be explicit, like 
+$7.2 \leq x \leq 7.7$, answers like $x_0 -\frac{1}{4} \leq x
+\leq x_0 + \frac{1}{4}$ will not receive credit.)
+
+\vspace{6.5cm}
+
+(c) Prove that $x=x_0$ from part (a) is the \underline{only} real number
+for which $f(x)=0$. 
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%      Question 8        %%%%%%%%%%%%%%%%%%%%%%%
+\textbf{\large Question 8. (24 points)}
+\newline
+(a) Find the linear approximation of the function $f(x)= \sqrt{1-x}$ at 
+the point $a=0$. 
+
+\vspace{10cm}
+
+(b) Use the above approximation to estimate $\sqrt{0.9}$ and $\sqrt{0.99}$.
+
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%      Question 9         %%%%%%%%%%%%%%%%%%%%%%%
+\textbf{\large Question 9. (24 points)} Estimate the integral
+$$\int_{-1/2}^{3/2} \frac{1}{x^4+1}dx$$
+Using a Riemann sum with four equal width intervals, and by choosing the 
+sample point to be the left endpoint of each interval. 
+\newline
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%     Question 10         %%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{\large Question 10. (24 points)} Find the indicated derivative 
+using the Fundamental \newline Theorem of Calculus. 
+
+(a) $\frac{\partial}{\partial x} \bigg{(} \bigint_x^1 t^2 \; dt \bigg{)}$
+
+\vspace{4cm}
+(b) $\frac{\partial}{\partial x} \bigg{(} \bigint_0^{x^2} \cos^2{(t)} \;dt
+\bigg{)}$
+
+\vspace{4cm}
+
+%%%%%%%%%%%%%%%%%%%     Question 11     %%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{\large Question 11. (24 points)} Evaluate the following integrals:
+\newline
+(a) $\bigint x^2 \big{(} 1+{\frac{1}{\sqrt{x}} \big{)}\;dx}$
+
+\vspace{4cm}
+
+(b) $\bigint_{-1}^{1} x^2\sin(x^3) \;dx$
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%      Question 12      %%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{\large Question 12. (24 points)} Find the area of the region bounded 
+by the curves $y=4x^2$ and $y=x^2+3$.
+
+
+\end{document}
