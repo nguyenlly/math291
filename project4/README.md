@@ -1,1 +1,1 @@
-Calculus with Mathematica. Complete the sample exam from Project 3.
+Calculus with Mathematica. Complete the sample exam from Project 2.
